@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Registration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<!-- Include header -->
+<div th:replace="Header :: header"></div>
+
+ <div th:replace="message :: message"></div>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height:100vh;">
+    <div class="card p-4 w-100" style="max-width: 500px;">
+        <h3 class="text-center mb-4 text-purple">Customer Registration</h3>
+
+        <!-- Form start -->
+        <form th:action="@{/customer/save}" th:object="${customer}" method="post">
+
+            <div class="mb-3">
+                <label for="custName" class="form-label">Full Name</label>
+                <input type="text" th:field="*{custName}" class="form-control" id="custName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="emailId" class="form-label">Email</label>
+                <input type="email" th:field="*{emailId}" class="form-control" id="emailId" placeholder="Enter email address" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="custPassword" class="form-label">Password</label>
+                <input type="password" th:field="*{custPassword}" class="form-control" id="custPassword" placeholder="Enter password" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="custAddress" class="form-label">Address</label>
+                <textarea th:field="*{custAddress}" class="form-control" id="custAddress" rows="2" placeholder="Enter address" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="contactNo" class="form-label">Contact No</label>
+                <input type="text" th:field="*{contactNo}" class="form-control" id="contactNo" placeholder="Enter contact number" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="custLocation" class="form-label">Location</label>
+                <input type="text" th:field="*{custLocation}" class="form-control" id="custLocation" placeholder="Enter city/location" required>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-custom">Register</button>
+            </div>
+        </form>
+        <!-- Form end -->
+
+        <p class="text-center mt-3">
+            Already have an account? 
+            <a th:href="@{/login}" class="text-decoration-none fw-semibold" style="color:#6a11cb;">Login here</a>
+        </p>
+    </div>
+    
+</div>
+<!-- Include Footer Fragment -->
+<div th:replace="Footer :: footer"></div>
+</body>
+</html>

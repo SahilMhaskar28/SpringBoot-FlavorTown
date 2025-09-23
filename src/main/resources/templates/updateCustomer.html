@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Customer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- include header -->
+<div th:replace="Header :: header"></div>
+
+<div class="container mt-4">
+ <form th:action="@{/customer/update}" th:object="${customer}" method="post">
+    <table class="table table-success">
+        <tr>
+            <th>Customer Id:</th>
+            <td><input type="text" th:field="*{cust_id}" class="form-control" readonly></td>
+        </tr>
+
+        <tr>
+            <th>Name:</th>
+            <td><input type="text" th:field="*{custName}" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <th>Email:</th>
+            <td><input type="text" th:field="*{emailId}" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <th>Address:</th>
+            <td><input type="text" th:field="*{custAddress}" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <th>Contact:</th>
+            <td><input type="text" th:field="*{contactNo}" class="form-control"></td>
+        </tr>
+        
+        <tr>
+            <th>Location:</th>
+            <td><input type="text" th:field="*{custLocation}" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Update" class="btn btn-success"></td>
+            <td><input type="reset" value="Clear" class="btn btn-danger"></td>
+        </tr>
+    </table>
+</form>
+</div>
+
+<!-- include footer -->
+<div th:replace="Footer :: footer"></div>
+
+</body>
+</html>

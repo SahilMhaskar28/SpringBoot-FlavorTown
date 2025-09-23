@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: 98c1d9;
+}
+
+ .navbar-custom {
+            background-color: #1e3d59; /* Deep blue-grey */
+        }
+        .navbar-custom .nav-link {
+            color: #f1f1f1;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #ffc107; /* Amber on hover */
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .navbar-brand:hover {
+            color: #ffc107;
+        }
+        
+.footer-custom {
+    background-color: #1e3d59;
+    color: #f1f1f1;
+    padding: 40px 0;
+}
+.footer-custom a {
+    color: #f1f1f1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-custom a:hover {
+    color: #ffc107;
+}
+.footer-bottom {
+    background-color: #162d44;
+    padding: 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
+   
+   .card {
+            border-radius: 20px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+        }
+        .btn-custom {
+            background-color: #6a11cb;
+            color: #fff;
+            font-weight: 500;
+        }
+        .btn-custom:hover {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+        
+        
+        
+        /* Custom styles to match the registration page theme */
+body {
+    background-color: #f0f2f5;
+}
+
+.text-purple {
+    color: #6a11cb;
+}
+
+.text-purple-light {
+    color: #8c4ad0;
+}
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom {
+    background: #6a11cb;
+    background: -webkit-linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+}
+
+.btn-custom:hover {
+    background: #2575fc;
+    background: -webkit-linear-gradient(to left, #6a11cb, #2575fc);
+    background: linear-gradient(to left, #6a11cb, #2575fc);
+}
+
+.btn-outline-custom {
+    color: #6a11cb;
+    border-color: #6a11cb;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+}
+
+.btn-outline-custom:hover {
+    color: white;
+    background: #6a11cb;
+    border-color: #6a11cb;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item h6 {
+    color: #333;
+}
+        

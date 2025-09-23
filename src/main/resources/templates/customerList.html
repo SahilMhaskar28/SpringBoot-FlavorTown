@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="container py-4">
+	
+	<div th:replace="Header :: header"></div>
+	
+	<div th:replace="message :: message"></div>
+
+    <h2 class="text-center mb-4">Customer List</h2>
+    <div class="container mt-3 mb-3">
+    <form th:action="@{/customer/search}" method="get" class="d-flex">
+        <input type="text" name="keyword" th:value="${keyword}" 
+               class="form-control me-2" placeholder="Enter Email">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+    <table class="table table-bordered table-striped table-hover align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr th:each="c : ${cList}">
+                <td th:text="${c.cust_id}"></td>
+                <td th:text="${c.custName}"></td>
+                <td th:text="${c.emailId}"></td>
+                <td th:text="${c.custAddress}"></td>
+                <td th:text="${c.contactNo}"></td>
+                <td th:text="${c.custLocation}"></td>
+                <td>
+                    <a th:href="@{/customer/update/{id}(id=${c.cust_id})}" class="btn btn-sm btn-primary">Update</a>
+                    <a th:href="@{/customer/delete/{id}(id=${c.cust_id})}" 
+                       onclick="return confirm('Are you sure you want to delete this customer?');" 
+                       class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center mt-3">
+        <a th:href="@{/}" class="btn btn-secondary">Back to Home</a>
+    </div>
+    
+    <!-- Include Footer Fragment -->
+<div th:replace="Footer :: footer"></div>
+    <!-- Bootstrap JS -->
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+    
+
+</body>
+</html>

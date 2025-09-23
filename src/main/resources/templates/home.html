@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FlavorTown | Home</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<!-- Include Header Fragment -->
+<div th:replace="Header :: header"></div>
+
+<div th:replace="message :: message"></div>
+
+<!-- Hero Section -->
+<section class="hero-section text-center text-white d-flex align-items-center ">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-primary">Welcome to FlavorTown</h1>
+		<p class="lead text-muted">Freshly cooked meals, delivered hot to your doorstep.</p>
+
+        <a th:href="@{/food/list}" class="btn btn-warning btn-lg mt-3">Order Now</a>
+    </div>
+</section>
+
+<!-- Recommended Dishes -->
+<div class="container my-5">
+    <h2 class="section-title text-center mb-4">Our Top Picks Just for You</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card top-dish-card shadow-sm h-100 d-flex flex-column">
+                <img th:src="@{/images/Margherita-Pizza.jpg}" class="card-img-top" alt="Pizza" style="height: 200px;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Cheesy Margherita Pizza</h5>
+                    <p class="card-text">Classic Italian flavors with fresh mozzarella, basil, and a crispy crust.</p>
+					<a th:href="@{/food/list}" class="btn btn-warning btn-sm mt-2 mt-auto">Order Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card top-dish-card shadow-sm h-100 d-flex flex-column">
+                <img th:src="@{/images/Spicy-Chicken-Burger.jpg}" class="card-img-top" alt="Burger" style="height: 200px;">
+                <div class="card-body d-flex flex-column">
+                   <h5 class="card-title">Spicy Chicken Burger</h5>
+					<p class="card-text">Crispy fried chicken topped with spicy mayo, lettuce, and pickles for a fiery kick.</p>
+					<a th:href="@{/food/list}" class="btn btn-warning btn-sm mt-2 mt-auto">Order Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card top-dish-card shadow-sm h-100 d-flex flex-column">
+                <img th:src="@{/images/Creamy-Alfredo-Pasta.jpg}" class="card-img-top" alt="Pasta" style="height: 200px;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Creamy Alfredo Pasta</h5>
+                    <p class="card-text">Rich and creamy white sauce pasta with parmesan and garlic flavors.</p>
+					<a th:href="@{/food/list}" class="btn btn-warning btn-sm mt-2 mt-auto">Order Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card top-dish-card shadow-sm h-100 d-flex flex-column">
+                <img th:src="@{/images/Fresh-Garden-Salad.jpg}" class="card-img-top" alt="Salad" style="height: 200px;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Fresh Garden Salad</h5>
+                    <p class="card-text">Crisp veggies, tangy dressing, and a refreshing bite in every forkful.</p>
+					<a th:href="@{/food/list}" class="btn btn-warning btn-sm mt-2 mt-auto">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Welcome Section -->
+<div class="container my-5">
+    <h2 class="section-title text-center mb-4">Discover the Taste of FlavorTown</h2>
+    <div class="row g-4 align-items-center">
+        <div class="col-md-8">
+            <img th:src="@{/images/templatemo_image_05.jpg}" alt="Welcome" class="img-fluid rounded shadow-sm mb-3">
+            <p>At FlavorTown, we believe food is more than just a meal – it’s an experience. Our chefs craft every dish with passion, using only the freshest ingredients.</p>
+            <p>From piping hot pizzas to sizzling burgers and wholesome salads, there’s something for everyone. Whether it’s lunch with friends or dinner with family, we’ve got you covered.</p>
+           
+        </div>
+        <div class="col-md-4 text-center">
+            <h3 class="section-subtitle mb-3">Freshly Cooked, Freshly Served!</h3>
+            <img th:src="@{/images/templatemo_image_06.jpg}" alt="New" class="img-fluid rounded shadow-sm mb-3">
+            <p>Every order is prepared fresh and delivered hot, so you enjoy the best taste every single time.</p>
+           
+        </div>
+    </div>
+</div>
+
+<!-- Include Footer Fragment -->
+<div th:replace="Footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Food</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- include header -->
+<div th:replace="Header :: header"></div>
+
+<div class="container mt-4">
+    <form th:action="@{/food/save}" th:object="${food}" method="post">
+        <table class="table table-success">
+            <tr>
+                <th>FoodId:</th>
+                <td>
+                    <input type="text" th:field="*{foodId}" class="form-control" readonly="readonly">
+                </td>
+            </tr>
+
+            <tr>
+                <th>FoodName:</th>
+                <td><input type="text" th:field="*{foodName}" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <th>FoodType:</th>
+                <td><input type="text" th:field="*{foodType}" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <th>FoodCategory:</th>
+                <td><input type="text" th:field="*{foodCategory}" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <th>FoodDescription:</th>
+                <td><input type="text" th:field="*{foodDescription}" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <th>FoodPrice:</th>
+                <td><input type="text" th:field="*{foodPrice}" class="form-control"></td>
+            </tr>
+
+           
+          <tr>
+   				 <th>Food Image (filename in /images/):</th>
+    			<td>
+        			<input type="text" th:field="*{foodImage}" class="form-control" placeholder="e.g. Margherita-Pizza.jpg">
+    		    </td>
+		  </tr>
+		   
+            <tr>
+                <td>
+                    <input type="submit" value="Update" class="btn btn-success">
+                </td>
+                <td>
+                    <input type="reset" value="Clear" class="btn btn-danger">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!-- include footer -->
+<div th:replace="Footer :: footer"></div>
+
+</body>
+</html>

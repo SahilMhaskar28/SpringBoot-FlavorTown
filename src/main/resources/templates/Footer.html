@@ -1,0 +1,46 @@
+<!-- fragments/footer.html -->
+<div th:fragment="footer">
+  <footer class="footer-custom mt-5">
+    <div class="container">
+      <div class="row">
+
+        <!-- Brand -->
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-bold text-white">
+            <i class="fa-solid fa-utensils text-warning"></i> FlavorTown
+          </h5>
+          <p class="small">Delicious food at your doorstep. Order now and enjoy every bite!</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="col-md-4 mb-3">
+          <h6 class="fw-bold text-warning">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/food/list}">Food Menus</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-md-4 mb-3">
+          <h6 class="fw-bold text-warning">Follow Us</h6>
+          <div class="d-flex gap-3">
+            <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="mb-0">&copy; 2025 FlavorTown. All Rights Reserved.</p>
+    </div>
+    
+  </footer>
+    <!-- ✅ Bootstrap JS (loaded once globally) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>

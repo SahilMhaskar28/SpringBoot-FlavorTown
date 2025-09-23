@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/cart.js"></script>
+    <style>
+        body { background-color: #f4f7f9; }
+        .cart-container { background: #e6f2e6; padding: 30px; border-radius: 10px; }
+        .action-btn { min-width: 150px; }
+        .remove-btn { min-width: 100px; }
+        .total-row td { font-weight: bold; }
+    </style>
+</head>
+<body>
+<!-- Include header -->
+<div th:replace="Header :: header"></div>
+
+<div th:replace="message :: message"></div>
+
+<div class="container mt-5 cart-container">
+    <h3 class="text-center mb-4">Your Cart</h3>
+
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-success">
+        <tr>
+            <th>Cart ID</th>
+            <th>Food Name</th>
+            <th>Quantity</th>
+            <th>Price (Each)</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${cartList}">
+            <td th:text="${c.cartid}"></td>
+            <td th:text="${c.fname}"></td>
+            <td>
+                <input type="number" class="form-control text-center"
+                       th:value="${c.fquantity}" min="1"
+                       onchange="updateQuantity(this)"
+                       th:data-cartid="${c.cartid}" />
+            </td>
+            <td>₹ <span th:text="${c.fprice}"></span></td>
+            <td class="totalprice">₹ <span th:text="${c.totalPrice}"></span></td>
+            <td>
+                <!-- Remove Button -->
+                <a th:href="@{/cart/remove/{id}(id=${c.cartid})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${#lists.isEmpty(cartList)}" class="alert alert-warning text-center">
+        Your cart is empty!
+    </div>
+
+    <!-- Total Bill -->
+    <div class="row mt-4 justify-content-end">
+        <div class="col-md-4">
+            <label><strong>Total Bill:</strong></label>
+            <input type="text" readonly class="form-control text-end" id="totalBill" />
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row mt-4">
+        <div class="col text-center">
+            <form th:action="@{/order/place}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-primary action-btn me-3">Order Now</button>
+            </form>
+            <form th:action="@{/cart/clear}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger action-btn">Clear Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Include footer -->
+<div th:replace="Footer :: footer"></div>
+</body>
+</html>

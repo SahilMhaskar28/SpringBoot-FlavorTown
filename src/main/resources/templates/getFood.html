@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Food List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<!-- Include header -->
+<div th:replace="Header :: header"></div>
+
+<div th:replace="message :: message"></div>
+
+<div class="container mt-3 mb-3">
+    <form th:action="@{/food/searchByName}" method="get" class="d-flex">
+        <input type="text" name="keyword" th:value="${keyword}" 
+               class="form-control me-2" placeholder="Enter name">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="container mt-4">
+    <table class="table table-bordered table-striped text-center align-middle">
+
+        <thead class="table-success">
+            <tr>
+                <th>FoodId</th>
+                <th>FoodName</th>
+                <th>FoodType</th>
+                <th>FoodCategory</th>
+                <th>FoodDescription</th>
+                <th>FoodPrice</th>
+                <th>Image</th>
+                <th colspan="2" th:if="${session.userRole == 'ADMIN' or session.userRole == 'USER'}">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="f : ${foodList}">
+    <td th:text="${f.foodId}"></td>
+    <td th:text="${f.foodName}"></td>
+    <td th:text="${f.foodType}"></td>
+    <td th:text="${f.foodCategory}"></td>
+    <td th:text="${f.foodDescription}"></td>
+    <td th:text="${f.foodPrice}"></td>
+   <td>
+    <img th:src="@{'/images/' + ${f.foodImage}}" alt="Food Image" height="100px" width="100px">
+</td>
+
+    <!-- Admin actions -->
+    <td th:if="${session.userRole == 'ADMIN'}">
+        <a th:href="@{/food/update/{id}(id=${f.foodId})}" class="btn btn-success">Update</a>
+    </td>
+    <td th:if="${session.userRole == 'ADMIN'}">
+        <a th:href="@{/food/delete/{id}(id=${f.foodId})}" class="btn btn-danger">Delete</a>
+    </td>
+
+    <!-- Add To Cart (only for customers) -->
+    <td th:if="${session.userRole == 'USER'}">
+        <form th:action="@{/cart/add}" method="post">
+            <input type="hidden" name="foodId" th:value="${f.foodId}" />
+            <button type="submit" class="btn btn-warning">Add To Cart</button>
+        </form>
+    </td>
+</tr>
+
+        </tbody>
+
+    </table>
+</div>
+
+<!-- Include footer -->
+<div th:replace="Footer :: footer"></div>
+
+</body>
+</html>

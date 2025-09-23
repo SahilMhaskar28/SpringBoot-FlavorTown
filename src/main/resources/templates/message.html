@@ -1,0 +1,22 @@
+<!-- templates/message.html -->
+<div th:fragment="message">
+    <div class="container mt-3">
+        <!-- Success message -->
+        <div th:if="${successMsg}" class="alert alert-success alert-dismissible fade show">
+            <span th:text="${successMsg}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Error message -->
+        <div th:if="${errMsg}" class="alert alert-danger alert-dismissible fade show">
+            <span th:text="${errMsg}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        
+        <!-- Error message -->
+        <div th:if="${loginError}" class="alert alert-danger alert-dismissible fade show">
+            <span th:text="${loginError}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </div>
+</div>
