@@ -36,8 +36,8 @@ public class CustomerController {
 		flag = csimpl.addCustomer(customer);
 		
 		if(flag) {
-			ra.addFlashAttribute("successMsg","User Successfully Registered");
-			return "redirect:/customer/list";
+			ra.addFlashAttribute("successMsg","User Successfully Registered. Login Here");
+			return "redirect:/login";
 		}
 		else {
 			ra.addFlashAttribute("errMsg","Registration failed. Try again.");
@@ -125,6 +125,17 @@ public class CustomerController {
 		    } else {
 		        return "redirect:/login";
 		    }
+	 }
+	 
+	 @GetMapping("/contact")
+	 public String ContactUs() {
+		 return "Contact";
+	 }
+	 
+	 @GetMapping("/contactMsg")
+	 public String showMSg(RedirectAttributes ra) {
+		 ra.addFlashAttribute("successMsg", "Submission was successfull!");
+		 return "redirect:/contact";
 	 }
 	 
 }
